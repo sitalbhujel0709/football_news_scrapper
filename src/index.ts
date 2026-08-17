@@ -13,7 +13,7 @@ const startServer = async () => {
       await redisClient.connect();
     }
     console.log("Redis connected successfully");
-    await addScrapeJob("https://goal.com/en-in/news",1000*60);
+    await addScrapeJob("https://goal.com/en-in/news",1000*60*5);
     app.listen(port, () => {
       console.log(`Server is running at http://localhost:${port}`);
     });
