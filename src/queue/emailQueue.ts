@@ -29,7 +29,9 @@ export const emailWorker = new Worker(
         await sendEmail(to, subject, html);
     },
     { 
-        connection: bullmqConnection 
+        connection: bullmqConnection ,
+        drainDelay:30,
+        stalledInterval:60000
     }
 );
 

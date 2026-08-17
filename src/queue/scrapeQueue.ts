@@ -17,7 +17,9 @@ const scrapeWorker = new Worker("scrape-queue", async (job:Job)=>{
     scrapeGoaldotcom("https://goal.com/en-in/news")
     
 },{
-    connection:bullmqConnection
+    connection:bullmqConnection,
+    drainDelay:30,
+    stalledInterval:60000
 })
 
 export const addScrapeJob = async (url:string,time:number)=>{

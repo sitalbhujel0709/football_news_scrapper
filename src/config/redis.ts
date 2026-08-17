@@ -2,7 +2,7 @@ import {createClient} from "redis"
 import { RedisCommandArgument, createNodeRedisClient } from "bullmq";
 
 const redisClient = createClient({
-    url: "redis://localhost:6000"
+    url: process.env.REDIS_URL!
 });
 
 redisClient.on("error",(error)=>{
