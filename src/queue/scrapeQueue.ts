@@ -1,11 +1,10 @@
 import { Job, Queue, Worker } from "bullmq";
 import { bullmqConnection} from "../config/redis";
 import { sleep } from "../utils/sleep";
-import { fetchPage } from "../scrapper/fetchPage";
-import * as cheerio from "cheerio";
 
-import { appendFile } from "node:fs/promises";
-import { scrapeGoaldotcom } from "../scrapper/pages/goal";
+
+
+import { runAllScrapper } from "../scrapper/runAllScrapper";
 
 const scrapeQueue = new Queue("scrape-queue",{
     connection:bullmqConnection
@@ -14,7 +13,7 @@ const scrapeQueue = new Queue("scrape-queue",{
 const scrapeWorker = new Worker("scrape-queue", async (job:Job)=>{
     console.log(`Processing scrape job ${job.id}`)
     await sleep()
-    scrapeGoaldotcom("https://goal.com/en-in/news")
+   runAllScrapper()
     
 },{
     connection:bullmqConnection,

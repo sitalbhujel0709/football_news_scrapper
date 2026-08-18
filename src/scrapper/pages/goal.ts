@@ -2,7 +2,7 @@ import { prisma } from "../../config/prisma";
 import { Prisma } from "../../generated/prisma/client";
 import { fetchPage } from "../fetchPage";
 import * as cheerio from "cheerio"
-export async function scrapeGoaldotcom(url: string) {
+export async function scrapeGoaldotcom(url: string):Promise<void | null> {
 
     try {
         const response = await fetchPage(url);

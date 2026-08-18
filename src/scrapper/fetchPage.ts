@@ -33,8 +33,6 @@ export async function fetchPage(url: string, options: FetchOptions = {}) {
                 maxRedirects:5
             })
             if(response.status === 200){
-                console.log(response.headers["content-type"])
-                console.log(typeof response.data)
                 return {data: response.data, status: response.status}
             }
             if(response.status >= 400 && response.status <500){
